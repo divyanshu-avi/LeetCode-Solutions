@@ -21,7 +21,7 @@ public:
             while(--j >= l)
                 ans.push_back(matrix[i][j]);//Right to left
             j++;
-            while(--i > u)
+            while(--i > u)//Not using >= because matrix[u][l] was already pushed in the beginning.
                 ans.push_back(matrix[i][j]);//Down to Up
             cout<<l<<r<<u<<d<<' ';
             u++; d--; l++; r--;//Updating boundaries
