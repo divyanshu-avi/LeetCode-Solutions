@@ -1,12 +1,9 @@
 class Solution {
 public:
     double myPow(double x, int n) {
-        if(n == 1 || x == 1)
-            return x;
         if(n == 0)
             return 1;
-        if(n == -1)
-            return 1/x;
+        //If n = 1 or -1 the recursive call will return 0 so there won't be a problem.
         if(n>0)
             return n%2==0 ? myPow(x*x, n/2) : myPow(x*x, n/2)*x;
         else
