@@ -22,16 +22,13 @@ public:
                     ans = s.substr(start, end-start);
                     minlen = end-start;
                 }
-                if(req[s[start]] != 0)
-                {
-                    count[s[start]]--;
-                    if(count[s[start]] < req[s[start]])//If count < required then that character is unsatisfied
-                        satisfied--;
-                }
+                count[s[start]]--;
+                if(count[s[start]] < req[s[start]])//If count < required then that character is unsatisfied
+                    satisfied--;
                 start++;
                 continue;
             }
-            if(end<n &&req[s[end]] != 0)//If current char belongs to t
+            if(end<n)
             {
                 count[s[end]]++;
                 if(count[s[end]] == req[s[end]])
