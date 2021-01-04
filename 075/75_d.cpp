@@ -8,9 +8,7 @@ public:
         r=nums.size()-1;
         while(m<=r)
         {
-            if(m<l)//if earlier m==l then l can go ahead of m. So correct that.
-                m=l;
-            else if(nums[m] == 0)
+            if(nums[m] == 0 && m>l)//m>l ensures we aren't doing useless swaps and some times l can go ahead of m so it also handles that.
                 swap(nums[l++], nums[m]);//Don't do m++ here as current element at m (after swapping) hasn't been handled.
             else if(nums[m] == 2)
                 swap(nums[m], nums[r--]);//Dont do m++ sam reason^^.
