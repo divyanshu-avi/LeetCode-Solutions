@@ -19,7 +19,8 @@ public:
         return sum >= 0 ? start : -1;
         /*start represents a position from where if we travel to end, tank will be >=0.
         But, we want to travel back to start and not just to the end!(in a complete circle)
-        But, if sum is >=0 we are guaranteed that tank(start to end) >= tank(end to start).
+        But, if sum is >=0 we are guaranteed that tank(start to end) + tank(end to start) >= 0.
+        As, tank(start to end) + tank(end to start) = sum which is >=0;
         Hence, we can always complete the circle without even checking for end to start!/*
     }
 };
