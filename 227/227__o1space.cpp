@@ -1,6 +1,6 @@
 class Solution {
 public:
-    //using stack
+    //wihout stack
     int calculate(string s) {
         char prevop='+';
         int ans=0, num=0, prev=0;
