@@ -1,18 +1,5 @@
 class Solution {
 public:
-
-	int rev(int n)
-	{
-		int ans = 0;
-		while (n)
-		{
-			ans *= 10;
-			ans += n % 10;
-			n /= 10;
-		}
-		return ans;
-	}
-
 	int calculate(string s) {
 		stack<int> numst;
 		stack<char> opst;
@@ -21,19 +8,16 @@ public:
 		priority.insert({'-', 0});
 		priority.insert({'*', 1});
 		priority.insert({'/', 1});
-		reverse(s.begin(), s.end());
+		//reverse(s.begin(), s.end());
 		//cout<<s;
-		int num = 0, num2, i, n = s.length(), start = 0, end = 0;
-		char op;
-		for (i = 0; i < n; i++)
+		int num = 0, num2, i, n = s.length(), start = n - 1, end = n - 1;
+		for (i = n - 1; i >= 0; i--)
 		{
 			if (isdigit(s[i]))
-				end = i;
+				start = i;
 			else if (priority.find(s[i]) != priority.end()) //s[i] is an operator
 			{
-				string temp = s.substr(start, end - start + 1);
-				reverse(temp.begin(), temp.end());
-				num = stoi(temp);
+				num = stoi(s.substr(start, end - start + 1));
 				numst.push(num);
 				//cout<<"Pushed "<<num<<" onto numst\n";
 				while (!opst.empty() && priority[s[i]] < priority[opst.top()])
@@ -58,12 +42,10 @@ public:
 				}
 				opst.push(s[i]);
 				//cout<<"Pushed "<<s[i]<<" onto opst\n";
-				start = end = i + 1;
+				start = end = i - 1;
 			}
 		}
-		string temp = s.substr(start, end - start + 1);
-		reverse(temp.begin(), temp.end());
-		num = stoi(temp);
+		num = stoi(s.substr(start, end - start + 1));
 		numst.push(num);
 		//cout<<"Pushed "<<num<<" onto numst\n";
 
